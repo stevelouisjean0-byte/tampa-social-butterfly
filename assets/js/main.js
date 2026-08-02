@@ -196,7 +196,7 @@
     });
   }
 
-  /* ---------------- booking form (demo) ---------------- */
+  /* ---------------- booking form (Web3Forms) ---------------- */
   var form = document.querySelector("form.booking-form");
   if (form) {
     form.addEventListener("submit", function (e) {
@@ -216,13 +216,28 @@
         if (firstBad) firstBad.focus();
         return;
       }
-      form.style.display = "none";
-      var success = document.querySelector(".form-success");
-      if (success) {
-        success.classList.add("show");
-        success.setAttribute("tabindex", "-1");
-        success.focus();
-      }
+      var errEl = form.querySelector(".form-error");
+      var submitBtn = form.querySelector('button[type="submit"]');
+      var fail = function () {
+        if (errEl) errEl.style.display = "block";
+        if (submitBtn) submitBtn.disabled = false;
+      };
+      if (errEl) errEl.style.display = "none";
+      if (submitBtn) submitBtn.disabled = true;
+      fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { Accept: "application/json" },
+        body: new FormData(form)
+      }).then(function (res) { return res.json(); }).then(function (data) {
+        if (!data.success) { fail(); return; }
+        form.style.display = "none";
+        var success = document.querySelector(".form-success");
+        if (success) {
+          success.classList.add("show");
+          success.setAttribute("tabindex", "-1");
+          success.focus();
+        }
+      }).catch(fail);
     });
     form.querySelectorAll(".field input, .field select, .field textarea").forEach(function (input) {
       input.addEventListener("input", function () {
@@ -287,6 +302,21 @@
     }, { passive: true });
     paint();
     restart();
+  }
+
+  /* ---------------- expired-event auto-hide ---------------- */
+  document.querySelectorAll("[data-expires]").forEach(function (el) {
+    var d = new Date(el.getAttribute("data-expires") + "T00:00:00");
+    if (!isNaN(d) && new Date() >= d) el.style.display = "none";
+  });
+
+  /* ---------------- sticky mobile CTA ---------------- */
+  var isContact = /contact\.html$/.test(window.location.pathname);
+  if (!isContact && window.matchMedia("(max-width: 860px)").matches) {
+    var bar = document.createElement("div");
+    bar.className = "sticky-cta";
+    bar.innerHTML = '<a href="contact.html">Reserve your date</a>';
+    document.body.appendChild(bar);
   }
 
   /* ---------------- footer year ---------------- */

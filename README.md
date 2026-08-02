@@ -21,12 +21,18 @@ python -m http.server 8737 --directory C:\Users\steve\tampa-social-butterfly
 This is a client-preview build. The following are **stand-ins and must be replaced**:
 
 1. ~~Pexels stand-ins~~ **REMOVED 2026-08-02**: every image and video now comes from the customer's original website or Instagram (verified: zero stock references site-wide). The hero and Instagram phone frame play the real reel from post Da_cW57RTRw. For a richer hero montage and more reel slots, pull additional Instagram posts (provide post URLs).
-2. **Reviews** (`reviews.html`, plus the pull-quote on `index.html`) are SAMPLE placeholders marked with HTML comments. Replace with verified client reviews (names/initials with permission). Do not launch with samples.
-3. **Event stories** (`stories.html`) are anonymized composite narratives marked SAMPLE. Replace with real, client-approved case studies.
-4. **Booking form** (`contact.html`) is demo-only (client-side validation + success message, no submission). Wire to Web3Forms or another endpoint.
-5. **Ticket link** (`events.html`) points to posh.vip root — replace with the exact event ticket URL.
-6. **Privacy/Terms** are drafts — have them reviewed.
-7. Events page: archive "Selling Tomorrow" after Aug 14, 2026.
+2. ~~Sample reviews/stories~~ **REMOVED 2026-08-02** per audit: reviews.html now shows an honest "reviews on their way" state (populate with real verified reviews only); stories.html timelines are second-person service descriptions, not fabricated cases.
+3. **Booking form is fully wired to Web3Forms** (fetch, honeypot, error fallback to direct email — never a false success). ONE step remains: paste a real access key into `contact.html` (`PASTE-WEB3FORMS-ACCESS-KEY-HERE`); get a free key at web3forms.com with contact@tampasocialbutterfly.com, and enable the autoresponder in the Web3Forms dashboard.
+4. **Ticket link** (`events.html`) points to posh.vip root — replace with the exact event ticket URL.
+5. **Privacy/Terms** are drafts — have them reviewed.
+6. Homepage "Happening next" section auto-hides after Aug 14, 2026 (`data-expires`); events.html card should be moved to the archive then.
+7. **Domain**: site is on github.io. When ready, point tampasocialbutterfly.com DNS at GitHub Pages, add a CNAME file, and swap the base URL in canonical/og/sitemap/robots (search-replace `stevelouisjean0-byte.github.io/tampa-social-butterfly` → `www.tampasocialbutterfly.com`).
+8. **Model releases**: obtain written releases for identifiable people in photos/reel (client-side task; Florida right of publicity).
+9. **Analytics**: none installed — pick Plausible/Fathom and add before iterating further.
+
+## Audit remediation done 2026-08-02
+
+One IA across nav/menu/footer (all 15 pages, script-generated); og:image/canonical/twitter meta on every page; og-cover.jpg (1200×630); LocalBusiness JSON-LD; sitemap.xml + robots.txt; width/height on all local images (CLS); WCAG AA contrast tokens (`--ink-3` #6B645C, new `--gold-text` #7C612E); hero video re-encoded 4.9 MB → 1.16 MB; shoot-08 PNG→JPEG (531→78 KB); sticky mobile CTA bar; expired-event auto-hide.
 
 ## Design system
 

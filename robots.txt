@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://stevelouisjean0-byte.github.io/tampa-social-butterfly/sitemap.xml
