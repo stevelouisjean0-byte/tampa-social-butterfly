@@ -253,14 +253,23 @@
           <span class="eyebrow rv">Selected work</span>
           <h2 class="display-l rv" style="--rv-d:.08s">Moments we didn't want to put down</h2>
         </div>
-        <div class="collage">
-          <figure class="c1 rv"><a href="gallery.html"><div class="media-shell"><img src="assets/img/site/community-07.webp" alt="Guests laughing under the gold balloon arch at a Tampa Social Butterfly event" loading="lazy" width="2394" height="1792"></div></a><figcaption>Community · The balloon arch</figcaption></figure>
-          <figure class="c2 rv" style="--rv-d:.1s"><a href="gallery.html"><div class="media-shell"><img src="assets/img/site/bach-06.jpeg" alt="Group yoga session on purple mats along the pool at a bachelorette retreat" loading="lazy" width="1066" height="1600"></div></a><figcaption>Bachelorette · Sunrise recovery</figcaption></figure>
-          <figure class="c3 rv" style="--rv-d:.18s"><a href="gallery.html"><div class="media-shell"><img src="assets/img/site/bach-01.jpeg" alt="Peach cocktail with a gold butterfly garnish at the pool's edge" loading="lazy" width="1066" height="1600"></div></a><figcaption>Details · The butterfly touch</figcaption></figure>
-          <figure class="c4 rv"><a href="gallery.html"><div class="media-shell"><img src="assets/img/site/shoot-04.jpeg" alt="Studio portrait of a young man in a graphic long-sleeve and chain necklace" loading="lazy" width="1066" height="1600"></div></a><figcaption>Photoshoot · Studio session</figcaption></figure>
-          <figure class="c5 rv" style="--rv-d:.1s"><a href="gallery.html"><div class="media-shell"><img src="assets/img/site/holiday-01.jpg" alt="Three friends in pajamas at a Galentine's party heart-balloon wall" loading="lazy" width="1440" height="1440"></div></a><figcaption>Holiday · Galentine's, delivered</figcaption></figure>
+        <div class="fan-stage" data-fan aria-label="Selected work carousel">
+          <a class="fan-card" href="gallery-community.html"><img src="assets/img/site/community-07.webp" alt="Guests laughing under the gold balloon arch at a Tampa Social Butterfly event" loading="lazy" width="2394" height="1792"></a>
+          <a class="fan-card" href="gallery-bachelorettes.html"><img src="assets/img/site/bach-06.jpeg" alt="Group yoga session on purple mats along the pool at a bachelorette retreat" loading="lazy" width="1066" height="1600"></a>
+          <a class="fan-card" href="gallery-bachelorettes.html"><img src="assets/img/site/bach-01.jpeg" alt="Peach cocktail with a gold butterfly garnish at the pool's edge" loading="lazy" width="1066" height="1600"></a>
+          <a class="fan-card" href="gallery-photoshoots.html"><img src="assets/img/site/shoot-04.jpeg" alt="Studio portrait of a young man in a graphic long-sleeve and chain necklace" loading="lazy" width="1066" height="1600"></a>
+          <a class="fan-card" href="gallery-holidays.html"><img src="assets/img/site/holiday-01.jpg" alt="Three friends in pajamas at a Galentine's party heart-balloon wall" loading="lazy" width="1440" height="1440"></a>
+          <a class="fan-card" href="gallery-holidays.html"><img src="assets/img/site/holiday-10.jpeg" alt="Family holiday photoshoot in coordinated formal outfits by the tree" loading="lazy" width="1600" height="1066"></a>
+          <a class="fan-card" href="gallery-community.html"><img src="assets/img/site/community-11.png" alt="Guest laughing with a cocktail in a lounge booth" loading="lazy" width="305" height="299"></a>
+          <a class="fan-card" href="gallery-community.html"><img src="assets/img/site/community-12.png" alt="Two guests under the tented event space" loading="lazy" width="305" height="299"></a>
+          <a class="fan-card" href="gallery-community.html"><img src="assets/img/site/community-13.png" alt="Guests outside the venue by the TSB banner" loading="lazy" width="305" height="299"></a>
         </div>
-        <p style="margin-top:3rem" class="rv"><a class="text-link" href="gallery.html">Browse the full gallery</a></p>
+        <div class="fan-controls rv">
+          <button class="pcar-btn" data-fan-prev aria-label="Previous cards">←</button>
+          <div class="fan-dots" data-fan-dots aria-hidden="true"></div>
+          <button class="pcar-btn" data-fan-next aria-label="Next cards">→</button>
+        </div>
+        <p style="margin-top:2rem;text-align:center" class="rv"><a class="text-link" href="gallery.html">Browse the full gallery</a></p>
       </div>
     </section>
 
@@ -390,5 +399,6 @@
   </footer>
 
   <script src="assets/js/main.js"></script>
+  <script src="assets/js/fan.js"></script>
 </body>
 </html>
