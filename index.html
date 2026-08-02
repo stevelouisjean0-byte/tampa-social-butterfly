@@ -82,9 +82,15 @@
 
   <main id="main">
 
-    <!-- 1 · hero: editorial split — copy left, real reel in a phone frame at native ratio -->
-    <header class="hero-split">
-      <div class="container hero-grid">
+    <!-- 1 · hero: full-bleed live video (client's reel), per owner's direction -->
+    <header class="hero">
+      <div class="hero-media" aria-hidden="true">
+        <video autoplay muted loop playsinline preload="metadata" poster="assets/media/hero-poster.jpg">
+          <source src="assets/media/ig-reel-01-web.mp4" type="video/mp4">
+        </video>
+        <div class="hero-scrim"></div>
+      </div>
+      <div class="hero-inner container">
         <div class="hero-copy">
           <span class="eyebrow rv">Tampa · Event content · Delivered in 24 hours</span>
           <h1 class="display-xl rv" style="--rv-d:.08s">Your social media <em class="italic-accent">bestie</em> for every celebration</h1>
@@ -97,22 +103,11 @@
               <span class="orb"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12L12 2M5 2h7v7"/></svg></span>
             </a>
           </div>
-          <span class="scroll-cue rv" style="--rv-d:.32s;margin-top:2.2rem"><span class="dot" aria-hidden="true"></span>Scroll</span>
         </div>
-        <div class="hero-phone rv" style="--rv-d:.18s">
-          <div class="phone">
-            <div class="phone-screen">
-              <video autoplay muted loop playsinline preload="metadata" poster="assets/media/ig-reel-01-poster.jpg">
-                <source src="assets/media/ig-reel-01-web.mp4" type="video/mp4">
-              </video>
-              <div class="phone-ui" aria-hidden="true">
-                <span class="handle"><span class="avatar">TSB</span>@tampasocialbutterfly</span>
-                <span class="caption">Filmed Saturday. Posted Sunday. ⚡</span>
-              </div>
-              <button class="phone-tap" aria-label="Pause reel"></button>
-            </div>
-          </div>
-        </div>
+      </div>
+      <div class="hero-side">
+        <button class="video-toggle" aria-label="Pause background video"></button>
+        <span class="scroll-cue"><span class="dot" aria-hidden="true"></span>Scroll</span>
       </div>
     </header>
 
