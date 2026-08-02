@@ -231,6 +231,64 @@
     });
   }
 
+  /* ---------------- phone carousel ---------------- */
+  var pcar = document.querySelector("[data-pcar]");
+  if (pcar) {
+    var slides = JSON.parse(pcar.getAttribute("data-pcar"));
+    var centerImg = pcar.querySelector(".pcar-center .phone-screen > img");
+    var leftImg = pcar.querySelector(".pcar-left img");
+    var rightImg = pcar.querySelector(".pcar-right img");
+    var capEl = pcar.querySelector(".pcar-center .phone-ui .caption");
+    var segs = pcar.querySelectorAll(".pcar-center .phone-progress i");
+    var cur = 0, timer = null, inView = true;
+
+    var mod = function (n) { return (n + slides.length) % slides.length; };
+    var paint = function () {
+      var s = slides[cur];
+      centerImg.src = s.src;
+      centerImg.alt = s.alt;
+      if (capEl) capEl.textContent = s.cap;
+      if (leftImg) leftImg.src = slides[mod(cur - 1)].src;
+      if (rightImg) rightImg.src = slides[mod(cur + 1)].src;
+      segs.forEach(function (seg, i) {
+        seg.classList.toggle("active", i === cur % segs.length);
+        if (i === cur % segs.length) seg.style.setProperty("--p", "1");
+      });
+    };
+    var go = function (dir) {
+      centerImg.classList.add("fading");
+      window.setTimeout(function () {
+        cur = mod(cur + dir);
+        paint();
+        centerImg.classList.remove("fading");
+      }, 240);
+    };
+    var restart = function () {
+      if (timer) window.clearInterval(timer);
+      if (!reduceMotion && inView) timer = window.setInterval(function () { go(1); }, 4200);
+    };
+    pcar.querySelector(".pcar-btn.prev").addEventListener("click", function () { go(-1); restart(); });
+    pcar.querySelector(".pcar-btn.next").addEventListener("click", function () { go(1); restart(); });
+    var tapBtn = pcar.querySelector(".pcar-center .phone-tap");
+    if (tapBtn) tapBtn.addEventListener("click", function () { go(1); restart(); });
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver(function (entries) {
+        inView = entries[0].isIntersecting;
+        restart();
+      }, { threshold: 0.25 }).observe(pcar);
+    }
+    var touchX = null;
+    pcar.addEventListener("touchstart", function (e) { touchX = e.touches[0].clientX; }, { passive: true });
+    pcar.addEventListener("touchend", function (e) {
+      if (touchX === null) return;
+      var dx = e.changedTouches[0].clientX - touchX;
+      if (Math.abs(dx) > 40) { go(dx < 0 ? 1 : -1); restart(); }
+      touchX = null;
+    }, { passive: true });
+    paint();
+    restart();
+  }
+
   /* ---------------- footer year ---------------- */
   var yearEl = document.querySelector("[data-year]");
   if (yearEl) yearEl.textContent = String(new Date().getFullYear());

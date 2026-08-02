@@ -542,6 +542,30 @@ p { margin: 0 0 1.2em; max-width: 62ch; }
 }
 .phone-tap:focus-visible { outline-offset: -4px; }
 
+/* phone carousel (native adaptation of shadcn phone-mockups) */
+.pcar { display: flex; flex-direction: column; align-items: center; gap: 1.4rem; }
+.pcar-stage { display: flex; align-items: center; justify-content: center; }
+.pcar .phone { transition: transform 0.8s var(--ease-lux), opacity 0.8s var(--ease-lux); }
+.pcar-side { width: min(200px, 30vw); opacity: 0.5; filter: saturate(0.85); z-index: 1; }
+.pcar-left { transform: translateX(26%) rotate(-5deg) scale(0.92); }
+.pcar-right { transform: translateX(-26%) rotate(5deg) scale(0.92); }
+.pcar-center { z-index: 2; }
+.pcar-center .phone-screen img { transition: opacity 0.45s var(--ease-lux); }
+.pcar-center .phone-screen img.fading { opacity: 0; }
+.pcar-controls { display: flex; gap: 0.6rem; }
+.pcar-btn {
+  width: 2.6rem; height: 2.6rem; border-radius: 50%;
+  border: 1px solid var(--line-strong);
+  background: var(--white); color: var(--ink);
+  cursor: pointer; font-size: 1rem;
+  transition: background 0.4s var(--ease-lux), transform 0.4s var(--ease-lux);
+}
+.pcar-btn:hover { background: var(--cream); }
+.pcar-btn:active { transform: scale(0.94); }
+@media (max-width: 860px) {
+  .pcar-side { display: none; }
+}
+
 .reel-row {
   display: flex; gap: clamp(1.2rem, 3vw, 2.4rem);
   align-items: center;
